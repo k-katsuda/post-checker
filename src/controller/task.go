@@ -1,29 +1,23 @@
 package controller
 
 import (
-	"fmt"
-	"time"
-
 	"github.com/gin-gonic/gin"
 	"github.com/k-katsuda/post-checker/src/model"
 )
 
-func TaskPOST(c *gin.Context) {
+func TasksPOST(c *gin.Context) {
 	db := model.DBConnect()
 
-	title := c.PostForm("title")
-	now := time.Now()
+	postFlg := c.PostForm("postFlg")
+	postCount := c.PostForm("postCount")
 
 	task := &model.Task{
-		Title:     title,
-		CreatedAt: now,
-		UpdatedAt: now,
+		postFlg:   postFlg,
+		postCount: postCount,
 	}
 
 	err := task.Save(db)
 	if err != nil {
 		panic(err.Error())
 	}
-
-	fmt.Printf("post sent. title: %s", title)
 }

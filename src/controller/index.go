@@ -1,28 +1,22 @@
 package controller
 
 import (
-	"fmt"
-	"net/http"
-	"strconv"
-	"time"
-
-	"github.com/gin-gonic/gin"
 	"github.com/k-katsuda/post-checker/src/model"
 )
 
 // タスク検索
 func FindByID(id uint) model.Task {
 	db := model.DBConnect()
-	result, err := db.Query("SELECT * FROM task WHERE id = ?", id)
+	result, err := db.Query("SELECT * FROM post WHERE id = ?", id)
 	if err != nil {
 		panic(err.Error())
 	}
 	task := model.Task{}
 	for result.Next() {
-		var createdAt, updatedAt time.Time
-		var title string
+		var postFlg int
+		var postCount int
 
-		err = result.Scan(&id, &createdAt, &updatedAt, &title)
+		err = result.Scan(&id, &postFlg, &postCount)
 		if err != nil {
 			panic(err.Error())
 		}
@@ -32,23 +26,4 @@ func FindByID(id uint) model.Task {
 		task.postCount = postCount
 	}
 	return task
-}
-
-// タスク更新
-func TaskPATCH(c *gin.Context) {
-	db := model.DBConnect()
-
-	id, _ := strconv.Atoi(c.Param("id"))
-	title := c.PostForm("title")
-	now := time.Now()
-
-	_, err := db.Exec("UPDATE task SET title = ?, updated_at=? WHERE id = ?", title, now, id)
-	if err != nil {
-		panic(err.Error())
-	}
-
-	task := FindByID(uint(id))
-
-	fmt.Println(task)
-	c.JSON(http.StatusOK, gin.H{"task": task})
 }

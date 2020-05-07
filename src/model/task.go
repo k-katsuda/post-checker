@@ -2,6 +2,6 @@ package model
 
 type Task struct {
 	ID        uint `json:"id"`        // id
-	postFlg   uint `json:"postFlg"`   // postFlg
-	postCount uint `json:"postCount"` // postCount
+	Postflg   uint `json:"postFlg"`   // postFlg
+	Postcount uint `json:"postCount"` // postCount
 }
