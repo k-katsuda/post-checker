@@ -13,8 +13,8 @@ func FindByID(id uint) model.Task {
 	}
 	task := model.Task{}
 	for result.Next() {
-		var postFlg int
-		var postCount int
+		var postFlg uint
+		var postCount uint
 
 		err = result.Scan(&id, &postFlg, &postCount)
 		if err != nil {

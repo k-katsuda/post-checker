@@ -8,16 +8,16 @@ import (
 func TasksPOST(c *gin.Context) {
 	db := model.DBConnect()
 
-	postFlg := c.PostForm("postFlg")
-	postCount := c.PostForm("postCount")
+	// postFlg := c.PostForm("postFlg")
+	// postCount := c.PostForm("postCount")
 
-	task := &model.Task{
-		Postflg:   postFlg,
-		Postcount: postCount,
-	}
+	// task := &model.Task{
+	// 	Postflg:   postFlg,
+	// 	Postcount: postCount,
+	// }
 
-	err := task.Save(db)
-	if err != nil {
-		panic(err.Error())
-	}
+	// err := task.Save(db)
+	// if err != nil {
+	// 	panic(err.Error())
+	// }
 }
