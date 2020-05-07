@@ -12,8 +12,8 @@ func TasksPOST(c *gin.Context) {
 	postCount := c.PostForm("postCount")
 
 	task := &model.Task{
-		postFlg:   postFlg,
-		postCount: postCount,
+		Postflg:   postFlg,
+		Postcount: postCount,
 	}
 
 	err := task.Save(db)

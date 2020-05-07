@@ -12,6 +12,7 @@ func main() {
 	{
 		v1.POST("/tasks", controller.TasksPOST)
 	}
+
 	// nginxのreverse proxy設定
 	router.Run(":9000")
 }
