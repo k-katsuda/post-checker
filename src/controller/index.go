@@ -22,8 +22,8 @@ func FindByID(id uint) model.Task {
 		}
 
 		task.ID = id
-		task.postFlg = postFlg
-		task.postCount = postCount
+		task.Postflg = postFlg
+		task.Postcount = postCount
 	}
 	return task
 }
