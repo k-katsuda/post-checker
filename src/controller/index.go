@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/k-katsuda/post-checker/src/model"
 )
 
 // タスク検索
@@ -27,9 +28,8 @@ func FindByID(id uint) model.Task {
 		}
 
 		task.ID = id
-		task.CreatedAt = createdAt
-		task.UpdatedAt = updatedAt
-		task.Title = title
+		task.postFlg = postFlg
+		task.postCount = postCount
 	}
 	return task
 }

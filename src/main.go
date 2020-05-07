@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/k-katsuda/post-checker/src/controller"
 )
 
 func main() {
